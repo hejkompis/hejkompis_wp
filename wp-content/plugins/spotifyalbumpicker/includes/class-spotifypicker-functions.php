@@ -349,7 +349,7 @@
 								"post_category"		=> $post_category_ids,
 								"post_date" 		=> date("Y-m-d", $values->timestamp)."T".date("H:i:s", $values->timestamp),
 								"post_status" 		=> "publish",
-								"tags_input" 		=> array('Pocket')
+								"tags_input" 		=> $values->tags
 							);
 
 							$saved_post_id = wp_insert_post($data);
@@ -524,12 +524,12 @@
 								"post_category"		=> $post_category_ids,
 								"post_date" 		=> date("Y-m-d", $values->timestamp)."T".date("H:i:s", $values->timestamp),
 								"post_status" 		=> "publish",
-								"tags_input" 		=> array('Pocket')
+								"tags_input" 		=> $values->tags
 							);
 
 							$saved_post_id = wp_insert_post($data);
 
-							add_post_meta($saved_post_id, "source", "spotify_album");
+							add_post_meta($saved_post_id, "source", "spotify_favourite");
 							add_post_meta($saved_post_id, "external_url", $values->url);
 
 							if($values->image != '' && @GetImageSize($values->image)) {
