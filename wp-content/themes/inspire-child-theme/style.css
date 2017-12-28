@@ -1,0 +1,18 @@
+/*
+ Theme Name:   An Inspire Child Theme
+ Theme URI:    http://grafikprofil.se/
+ Description:  An Inspire Child Theme
+ Author:       Per Olsson
+ Author URI:   http://grafikprofil.se
+ Template:     Inspire
+ Version:      0.1.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:         
+ Text Domain:  inspire-child-theme
+*/
+
+#logo a img {
+    max-height: 80px;
+    width: auto;
+}
