@@ -101,7 +101,7 @@ function sc_bigbutton ($atts, $content) {
 			'content' 	=>  !empty($content) ? $content : 'Button'
 		), $atts
 	));
-	$string = "<a href='$url' class='button big $color'>$content</a>";
+	$string = "<a href='$url' id='external_link' target='_blank' class='button big $color'>$content</a>";
 	return $string;						
 }
 

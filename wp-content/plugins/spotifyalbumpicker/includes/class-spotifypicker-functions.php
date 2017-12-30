@@ -3,6 +3,7 @@
 	class Spotify {
 
 		private $name,
+				$content,
 				$url, 
 				$image, 
 				$tags = [], 
@@ -12,6 +13,7 @@
 
 			$this->name 		= $object['name'];
 			$this->url 			= $object['url'];
+			$this->content 		= $object['content'];
 			$this->timestamp 	= strtotime($object['timestamp']);
 			$this->image 		= $object['image'];	
 			$this->tags 		= [$object['tag']];
@@ -250,6 +252,8 @@
 
 						$item_data = [
 							'name' => $item->album->artists[0]->name.' - '.$item->album->name,
+							'content' => '<iframe src="https://open.spotify.com/embed?uri='.$item->album->uri.'"
+        width="300" height="380" frameborder="0" allowtransparency="true"></iframe><br /><br />[bigbutton url="'.$item->album->external_urls->spotify.'" color="dark"]Go to album on Spotify[/bigbutton]',
 							'url' => $item->album->external_urls->spotify,
 							'timestamp' => $item->added_at,
 							'image' => $image,
@@ -259,12 +263,6 @@
 						$spotify_posts[] = new Spotify($item_data);
 						
 					}
-
-					// echo '<pre>';
-					// 	print_r($spotify_posts);
-					// echo '</pre>';
-
-					// die;
 
 					$spotify_posts = array_reverse($spotify_posts);
 
@@ -303,7 +301,12 @@
 					 	$current_categories[$wordpress_category->term_id] = $wordpress_category->slug;				
 					}
 
+					// $count = 0;
+
 					foreach($spotify_posts as $key => $values) {
+
+						// if($count >= 5) { die; }
+						// $count++;
 
 						$data = [];
 
@@ -346,6 +349,7 @@
 							// spara ner post
 							$data = array(
 								"post_title" 		=> $values->name,
+								"post_content" 		=> $values->content,
 								"post_category"		=> $post_category_ids,
 								"post_date" 		=> date("Y-m-d", $values->timestamp)."T".date("H:i:s", $values->timestamp),
 								"post_status" 		=> "publish",
@@ -421,6 +425,12 @@
 						
 					$data = $this->curl_get($url, $headers);
 
+					// echo '<pre>';
+					// 	print_r($data);
+					// echo '</pre>';
+
+					// die;
+
 					$spotify_posts = [];		
 
 					foreach($data->items as $item) {
@@ -431,6 +441,8 @@
 
 						$item_data = [
 							'name' => $item->track->artists[0]->name.' - '.$item->track->name,
+							'content' => '<iframe src="https://open.spotify.com/embed?uri='.$item->track->uri.'"
+        width="300" height="380" frameborder="0" allowtransparency="true"></iframe><br /><br />[bigbutton url="'.$item->track->external_urls->spotify.'" color="dark"]Go to song on Spotify[/bigbutton]',
 							'url' => $item->track->external_urls->spotify,
 							'timestamp' => $item->added_at,
 							'image' => $image,
@@ -478,7 +490,12 @@
 					 	$current_categories[$wordpress_category->term_id] = $wordpress_category->slug;				
 					}
 
+					$count = 0;
+
 					foreach($spotify_posts as $key => $values) {
+
+						if($count >= 5) { die; }
+						$count++;
 
 						$data = [];
 
@@ -521,6 +538,7 @@
 							// spara ner post
 							$data = array(
 								"post_title" 		=> $values->name,
+								"post_content"		=> $values->content,
 								"post_category"		=> $post_category_ids,
 								"post_date" 		=> date("Y-m-d", $values->timestamp)."T".date("H:i:s", $values->timestamp),
 								"post_status" 		=> "publish",

@@ -3,6 +3,7 @@
 	class Pocket {
 
 		private $name,
+				$excerpt,
 				$url, 
 				$image, 
 				$tags = [],
@@ -19,6 +20,7 @@
 			else {
 				$this->name = $object->resolved_url;
 			}
+			$this->excerpt 		= $object->excerpt;
 			$this->url 			= $object->resolved_url;
 			$this->timestamp 	= $object->time_added;
 			if(isset($object->image) && is_object($object->image)) {
@@ -120,7 +122,7 @@
 			}
 
 			// echo '<pre>';
-			// 	print_r($pocket_posts);
+			// 	print_r($data->list);
 			// echo '</pre>';
 
 			// die;
@@ -162,7 +164,12 @@
 			 	$current_categories[$wordpress_category->term_id] = $wordpress_category->slug;				
 			}
 
+			// $count = 0;
+
 			foreach($pocket_posts as $key => $values) {
+
+				// if($count >= 5) { die; }
+				// $count++;
 
 				$data = [];
 
@@ -200,11 +207,14 @@
 						array_push($post_category_ids, $post_category_id);
 					}
 
+					$post_content = $values->excerpt.'<br /><br />[bigbutton url="'.$values->url.'" color="dark"]Read full article[/bigbutton]';
+
 					// 4. lägg in alla kategories id:n i post-data
 
 					// spara ner post
 					$data = array(
 						"post_title" 		=> $values->name,
+						"post_content" 		=> $post_content,
 						"post_category"		=> $post_category_ids,
 						"post_date" 		=> date("Y-m-d", $values->timestamp)."T".date("H:i:s", $values->timestamp),
 						"post_status" 		=> "publish",

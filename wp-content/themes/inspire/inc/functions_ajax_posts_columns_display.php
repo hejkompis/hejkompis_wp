@@ -75,7 +75,7 @@
 									} else {
 									?>
 										<div class="item-excerpt">
-											<a href="<?php echo get_permalink($results_query[$i]->ID); ?>"><p><?php if (!empty($result_cmb_excerpt)) {echo do_shortcode($result_cmb_excerpt);} else {echo mb_make_excerpt($results_query[$i]->post_content, $default_excerpt_len, true);} ?></p></a>
+											<!-- <a href="<?php echo get_permalink($results_query[$i]->ID); ?>"><p><?php if (!empty($result_cmb_excerpt)) {echo do_shortcode($result_cmb_excerpt);} else {echo mb_make_excerpt($results_query[$i]->post_content, $default_excerpt_len, true);} ?></p></a> -->
 										</div>
 									<?php
 									}
