@@ -252,8 +252,7 @@
 
 						$item_data = [
 							'name' => $item->album->artists[0]->name.' - '.$item->album->name,
-							'content' => '<iframe src="https://open.spotify.com/embed?uri='.$item->album->uri.'"
-        width="300" height="380" frameborder="0" allowtransparency="true"></iframe><br /><br />[bigbutton url="'.$item->album->external_urls->spotify.'" color="dark"]Go to album on Spotify[/bigbutton]',
+							'content' => '<iframe src="https://open.spotify.com/embed?uri='.$item->album->uri.'"width="300" height="380" frameborder="0" allowtransparency="true"></iframe><br /><br />[bigbutton url="'.$item->album->external_urls->spotify.'" color="dark"]Go to album on Spotify[/bigbutton]',
 							'url' => $item->album->external_urls->spotify,
 							'timestamp' => $item->added_at,
 							'image' => $image,
@@ -301,12 +300,12 @@
 					 	$current_categories[$wordpress_category->term_id] = $wordpress_category->slug;				
 					}
 
-					// $count = 0;
+					$count = 0;
 
 					foreach($spotify_posts as $key => $values) {
 
-						// if($count >= 5) { die; }
-						// $count++;
+						if($count >= 5) { die; }
+						$count++;
 
 						$data = [];
 
@@ -441,8 +440,7 @@
 
 						$item_data = [
 							'name' => $item->track->artists[0]->name.' - '.$item->track->name,
-							'content' => '<iframe src="https://open.spotify.com/embed?uri='.$item->track->uri.'"
-        width="300" height="380" frameborder="0" allowtransparency="true"></iframe><br /><br />[bigbutton url="'.$item->track->external_urls->spotify.'" color="dark"]Go to song on Spotify[/bigbutton]',
+							'content' => '<iframe src="https://open.spotify.com/embed?uri='.$item->track->uri.'"width="300" height="380" frameborder="0" allowtransparency="true"></iframe><br /><br />[bigbutton url="'.$item->track->external_urls->spotify.'" color="dark"]Go to song on Spotify[/bigbutton]',
 							'url' => $item->track->external_urls->spotify,
 							'timestamp' => $item->added_at,
 							'image' => $image,
