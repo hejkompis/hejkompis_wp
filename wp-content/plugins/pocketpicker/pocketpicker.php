@@ -3,7 +3,7 @@
  * Plugin Name:       Pocket Picker
  * Plugin URI:        http://grafikprofil.se/pocketpicker
  * Description:       A plugin that picks posts from Pocket and saves as Wordpress posts
- * Version:           0.1.0
+ * Version:           0.2.0
  * Author:            Per Olsson
  * Author URI:        http://grafikprofil.se
  * Text Domain:       pocketpicker-locale

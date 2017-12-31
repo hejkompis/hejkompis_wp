@@ -7,7 +7,7 @@ class Spotifypicker {
     public function __construct() {
  
         $this->plugin_slug = 'spotifypicker';
-        $this->version = '0.1.0';
+        $this->version = '0.2.0';
 
         $this->load_dependencies();
         $this->define_admin_hooks();
