@@ -218,7 +218,7 @@
 						"post_category"		=> $post_category_ids,
 						"post_date" 		=> date("Y-m-d", $values->timestamp)."T".date("H:i:s", $values->timestamp),
 						"post_status" 		=> "publish",
-						"tags_input" 		=> array('Pocket')
+						"tags_input" 		=> array('pocket')
 					);
 
 					$saved_post_id = wp_insert_post($data);
