@@ -164,12 +164,12 @@
 			 	$current_categories[$wordpress_category->term_id] = $wordpress_category->slug;				
 			}
 
-			// $count = 0;
+			$count = 0;
 
 			foreach($pocket_posts as $key => $values) {
 
-				// if($count >= 5) { die; }
-				// $count++;
+				if($count >= 100) { die; }
+				$count++;
 
 				$data = [];
 

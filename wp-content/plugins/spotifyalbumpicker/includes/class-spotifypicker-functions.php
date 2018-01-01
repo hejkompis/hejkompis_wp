@@ -5,6 +5,7 @@
 		private $name,
 				$content,
 				$url, 
+				$spotify_uri,
 				$image, 
 				$tags = [], 
 				$timestamp;
@@ -13,6 +14,7 @@
 
 			$this->name 		= $object['name'];
 			$this->url 			= $object['url'];
+			$this->spotify_uri 	= $object['spotify_uri'];
 			$this->content 		= $object['content'];
 			$this->timestamp 	= strtotime($object['timestamp']);
 			$this->image 		= $object['image'];	
@@ -252,7 +254,7 @@
 
 						$item_data = [
 							'name' => $item->album->artists[0]->name.' - '.$item->album->name,
-							'content' => '<iframe src="https://open.spotify.com/embed?uri='.$item->album->uri.'"width="300" height="380" frameborder="0" allowtransparency="true"></iframe><br /><br />[bigbutton url="'.$item->album->external_urls->spotify.'" color="dark"]Go to album on Spotify[/bigbutton]',
+							'spotify_uri' => $item->album->uri,
 							'url' => $item->album->external_urls->spotify,
 							'timestamp' => $item->added_at,
 							'image' => $image,
@@ -300,12 +302,12 @@
 					 	$current_categories[$wordpress_category->term_id] = $wordpress_category->slug;				
 					}
 
-					// $count = 0;
+					$count = 0;
 
 					foreach($spotify_posts as $key => $values) {
 
-						// if($count >= 5) { die; }
-						// $count++;
+						if($count >= 100) { die; }
+						$count++;
 
 						$data = [];
 
@@ -359,6 +361,7 @@
 
 							add_post_meta($saved_post_id, "source", "spotify_album");
 							add_post_meta($saved_post_id, "external_url", $values->url);
+							add_post_meta($saved_post_id, "spotify_uri", $values->spotify_uri);
 
 							if($values->image != '' && @GetImageSize($values->image)) {
 
@@ -440,7 +443,7 @@
 
 						$item_data = [
 							'name' => $item->track->artists[0]->name.' - '.$item->track->name,
-							'content' => '<iframe src="https://open.spotify.com/embed?uri='.$item->track->uri.'"width="300" height="380" frameborder="0" allowtransparency="true"></iframe><br /><br />[bigbutton url="'.$item->track->external_urls->spotify.'" color="dark"]Go to song on Spotify[/bigbutton]',
+							'spotify_uri' => $item->track->uri,
 							'url' => $item->track->external_urls->spotify,
 							'timestamp' => $item->added_at,
 							'image' => $image,
@@ -488,12 +491,12 @@
 					 	$current_categories[$wordpress_category->term_id] = $wordpress_category->slug;				
 					}
 
-					// $count = 0;
+					$count = 0;
 
 					foreach($spotify_posts as $key => $values) {
 
-						// if($count >= 5) { die; }
-						// $count++;
+						if($count >= 100) { die; }
+						$count++;
 
 						$data = [];
 
@@ -547,6 +550,7 @@
 
 							add_post_meta($saved_post_id, "source", "spotify_favourite");
 							add_post_meta($saved_post_id, "external_url", $values->url);
+							add_post_meta($saved_post_id, "spotify_uri", $values->spotify_uri);
 
 							if($values->image != '' && @GetImageSize($values->image)) {
 
