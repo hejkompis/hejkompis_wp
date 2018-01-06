@@ -168,14 +168,15 @@
 
 			foreach($pocket_posts as $key => $values) {
 
-				if($count >= 100) { die; }
-				$count++;
+				if($count >= 25) { die; }
 
 				$data = [];
 
 				$post_exists = in_array($values->url, $current_urls) ? true : false;
 
 				if(!$post_exists) {
+
+					$count++;
 
 					// spara kategori om den inte redan finns
 					// 1. ta fram pocket-taggar och gör om till array

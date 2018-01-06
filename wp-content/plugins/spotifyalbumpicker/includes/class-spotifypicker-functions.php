@@ -3,7 +3,6 @@
 	class Spotify {
 
 		private $name,
-				$content,
 				$url, 
 				$spotify_uri,
 				$image, 
@@ -15,7 +14,6 @@
 			$this->name 		= $object['name'];
 			$this->url 			= $object['url'];
 			$this->spotify_uri 	= $object['spotify_uri'];
-			$this->content 		= $object['content'];
 			$this->timestamp 	= strtotime($object['timestamp']);
 			$this->image 		= $object['image'];	
 			$this->tags 		= [$object['tag']];
@@ -306,14 +304,15 @@
 
 					foreach($spotify_posts as $key => $values) {
 
-						if($count >= 100) { die; }
-						$count++;
+						if($count >= 25) { die; }
 
 						$data = [];
 
 						$post_exists = in_array($values->url, $current_urls) ? true : false;
 
 						if(!$post_exists) {
+
+							$count++;
 
 							// spara kategori om den inte redan finns
 							// 1. ta fram pocket-taggar och gör om till array
@@ -350,7 +349,6 @@
 							// spara ner post
 							$data = array(
 								"post_title" 		=> $values->name,
-								"post_content" 		=> $values->content,
 								"post_category"		=> $post_category_ids,
 								"post_date" 		=> date("Y-m-d", $values->timestamp)."T".date("H:i:s", $values->timestamp),
 								"post_status" 		=> "publish",
@@ -493,16 +491,28 @@
 
 					$count = 0;
 
+					// echo '<pre>';
+					// 	print_r($spotify_posts);
+					// echo '</pre>';
+
+					// die;
+
+
 					foreach($spotify_posts as $key => $values) {
 
-						if($count >= 100) { die; }
-						$count++;
+						if($count >= 25) { die; }
 
 						$data = [];
 
 						$post_exists = in_array($values->url, $current_urls) ? true : false;
 
 						if(!$post_exists) {
+
+							$count++;
+
+							// echo '<pre>';
+							// 	print_r($values);
+							// echo '</pre>';
 
 							// spara kategori om den inte redan finns
 							// 1. ta fram pocket-taggar och gör om till array
@@ -539,7 +549,6 @@
 							// spara ner post
 							$data = array(
 								"post_title" 		=> $values->name,
-								"post_content"		=> $values->content,
 								"post_category"		=> $post_category_ids,
 								"post_date" 		=> date("Y-m-d", $values->timestamp)."T".date("H:i:s", $values->timestamp),
 								"post_status" 		=> "publish",
