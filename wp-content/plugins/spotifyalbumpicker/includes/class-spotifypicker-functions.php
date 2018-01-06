@@ -406,6 +406,8 @@
 
 			}
 
+			die;
+
 		}
 
 		public function get_favourites() {
@@ -605,6 +607,8 @@
 				}
 
 			}
+
+			die;
 
 		}
 
