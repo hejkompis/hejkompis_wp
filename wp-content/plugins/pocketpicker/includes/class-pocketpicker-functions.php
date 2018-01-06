@@ -168,7 +168,7 @@
 
 			foreach($pocket_posts as $key => $values) {
 
-				if($count >= 25) { die; }
+				if($count >= 100) { die; }
 
 				$data = [];
 
@@ -208,7 +208,7 @@
 						array_push($post_category_ids, $post_category_id);
 					}
 
-					$post_content = $values->excerpt.'<br /><br />[bigbutton url="'.$values->url.'" color="dark"]Read full article[/bigbutton]';
+					$post_content = $values->excerpt;
 
 					// 4. lägg in alla kategories id:n i post-data
 

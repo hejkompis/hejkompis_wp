@@ -4,6 +4,9 @@
 			//get user like string from cookie for use in later check
 			$like_string = mb_cookie_get_key_value ("inspire_cookie", "likes");
 			$likes = get_post_meta(get_the_ID(), 'inspire_likes', true);
+			$external_url = get_post_meta(get_the_ID(), 'external_url', true);
+			$spotify_uri = get_post_meta(get_the_ID(), 'spotify_uri', true);
+			
 			if (empty($likes)) $likes = 0;
 
 			$inspire_options_post = get_option('inspire_options_post');
@@ -125,6 +128,22 @@
 					<div class="post-entry">
 
 						<?php the_content(); ?>
+
+						<?php
+
+							if($spotify_uri) {
+								echo '<iframe src="https://open.spotify.com/embed?uri='.$spotify_uri.'" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>';
+							}
+
+						?>
+
+						<?php
+
+							if($external_url) {
+								echo '<a href="'.$external_url.'" id="external_link" target="_blank" class="button big dark">External link</a>';
+							}
+
+						?>
 						
 						<?php wp_link_pages(); ?>
 						
