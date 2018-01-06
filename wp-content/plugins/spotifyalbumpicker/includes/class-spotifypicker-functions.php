@@ -304,7 +304,7 @@
 
 					foreach($spotify_posts as $key => $values) {
 
-						if($count >= 100) { die; }
+						if($count >= 10) { die; }
 
 						$data = [];
 
@@ -360,6 +360,7 @@
 							add_post_meta($saved_post_id, "source", "spotify_album");
 							add_post_meta($saved_post_id, "external_url", $values->url);
 							add_post_meta($saved_post_id, "spotify_uri", $values->spotify_uri);
+							array_push($current_urls, $values->url);
 
 							if($values->image != '' && @GetImageSize($values->image)) {
 
@@ -502,7 +503,7 @@
 
 					foreach($spotify_posts as $key => $values) {
 
-						if($count >= 100) { die; }
+						if($count >= 10) { die; }
 
 						$data = [];
 
@@ -562,6 +563,7 @@
 							add_post_meta($saved_post_id, "source", "spotify_favourite");
 							add_post_meta($saved_post_id, "external_url", $values->url);
 							add_post_meta($saved_post_id, "spotify_uri", $values->spotify_uri);
+							array_push($current_urls, $values->url);
 
 							if($values->image != '' && @GetImageSize($values->image)) {
 

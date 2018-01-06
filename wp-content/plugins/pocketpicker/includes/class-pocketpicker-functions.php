@@ -168,7 +168,7 @@
 
 			foreach($pocket_posts as $key => $values) {
 
-				if($count >= 100) { die; }
+				if($count >= 10) { die; }
 
 				$data = [];
 
@@ -226,6 +226,7 @@
 
 					add_post_meta($saved_post_id, "source", "pocket");
 					add_post_meta($saved_post_id, "external_url", $values->url);
+					array_push($current_urls, $values->url);
 
 					if($values->image != '' && @GetImageSize($values->image)) {
 
