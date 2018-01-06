@@ -304,7 +304,7 @@
 
 					foreach($spotify_posts as $key => $values) {
 
-						if($count >= 10) { die; }
+						if($count >= 25) { die; }
 
 						$data = [];
 
@@ -503,7 +503,7 @@
 
 					foreach($spotify_posts as $key => $values) {
 
-						if($count >= 10) { die; }
+						if($count >= 25) { die; }
 
 						$data = [];
 
