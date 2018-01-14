@@ -50,7 +50,7 @@
 				<div class='post-img full'>
 					<div class='flexslider flexslider_single'>
 						<ul class="slides">
-							<?php printf("<li><a href='%s'><img width='%d' src='%s'></a></li>", esc_url($post_thumbnail_src[0]), esc_attr($featured_img_width), esc_url($post_thumbnail_src[0])); ?>
+							<?php //printf("<li><a href='%s'><img width='%d' src='%s'></a></li>", esc_url($post_thumbnail_src[0]), esc_attr($featured_img_width), esc_url($post_thumbnail_src[0])); ?>
 
 							<?php 
 								for ($i = 0; $i < count($project_attachments); $i++) {
@@ -96,7 +96,7 @@
 							<div class='post-img'>
 								<div class='flexslider flexslider_single'>
 									<ul class="slides">
-										<?php printf("<li><a href='%s'><img width='%d' src='%s'></a></li>", esc_url($post_thumbnail_src[0]), esc_attr($featured_img_width), esc_url($post_thumbnail_src[0])); ?>
+										<?php printf("<li><img src='%s'></li>", esc_url($post_thumbnail_src[0]), esc_attr($featured_img_width), esc_url($post_thumbnail_src[0])); ?>
 
 										<?php 
 											for ($i = 0; $i < count($project_attachments); $i++) {
@@ -113,7 +113,6 @@
 						<?php
 						}
 					?>
-
 
 					<!-- TITLE AND META -->
 					<div class="post-title">

@@ -16,3 +16,17 @@
     max-height: 80px;
     width: auto;
 }
+
+.flexslider ul.slides li {
+	text-align: center;
+}
+
+.flexslider ul.slides li img {
+    filter: none;
+    -webkit-filter: none;
+}
+
+.flexslider .slides img {
+    width: auto !important;
+    display: inline !important;
+}
